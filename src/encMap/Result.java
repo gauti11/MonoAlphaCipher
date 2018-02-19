@@ -7,14 +7,14 @@ import java.util.ArrayList;
 
 
 public class Result {
-	ArrayList<String> concatData = new ArrayList<String>();
+	//ArrayList<String> concatData = new ArrayList<String>();
 	
-	public void writeFile(String fw) {
+	public void writeFile(String fw, ArrayList<String> val) {
 		BufferedWriter writer;
 		try {
 			writer = new BufferedWriter(new FileWriter(fw));
 			//System.out.println(string);
-			for (String string : concatData) 
+			for (String string : val) 
 		//	{
 				writer.append(string+"\n");
 				writer.newLine();

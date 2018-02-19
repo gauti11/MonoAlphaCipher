@@ -1,7 +1,9 @@
 package monoalphabeticCipher.Driver;
 
-import java.util.Random;
+import java.util.ArrayList;
 
+import encMap.Result;
+import encMap.fileProcessor;
 import encMap.generateMap;
 
 public class Driver {
@@ -16,8 +18,27 @@ public class Driver {
 		ns.setSeed(seed);
 		double k = ns.nextDouble()*10;
 		System.out.println("\n" + k);*/
+		//C:\Users\GautiSpurs\eclipse-workspace\Monoalphabetic Cipher\src\input.txt
+		fileProcessor fp = new fileProcessor(args[0]);
 		generateMap gm = new generateMap();
-		gm.printMap(26);
+		Result r = new Result();
+		ArrayList<String> val = new ArrayList<>();
+		if(Integer.parseInt(args[3]) == 1) {
+			String s = null;
+			while((s = fp.readLine()) != null) {
+				val = gm.encryptData(s, Integer.parseInt(args[2]));
+			}
+			
+		} else if(Integer.parseInt(args[3]) == 0) {
+			String s = null;
+			while((s = fp.readLine()) != null) {
+				val = gm.decryptData(s, Integer.parseInt(args[2]));
+			}
+		}
+		r.writeFile(args[1], val);
+		//gm.printMap(8);
+		//gm.encryptData("Gautam", 8);
+		//gm.decryptData("hello",8);
 /*
 		final String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String alphabet1 = "QWERTYUIOPASDFGHJKLZXCVBNM";
